@@ -20,6 +20,10 @@ server.get('/hello', (req, res) => {
     res.status(200).json({ hello: 'WEB 27'})
 })
 
+server.get('/api/hubs', (req, res) => {
+    res.status(200).json(hubs);
+})
+
 // create a .post endpoint (follow along)
 server.post('/api/hubs', (req, res) => {
     const hubInfo = req.body;
@@ -32,11 +36,14 @@ server.post('/api/hubs', (req, res) => {
     res.status(201).json(hubInfo);
 })
 
+server.get('/api/lessons', (req, res) => {
+    res.status(200).json(lessons);
+})
+
 // create a .post to receive lessons from /api/lessons/
 server.post('/api/lessons', (req, res) => {
     const lessonInfo = req.body;
 
-    // validate the hubInfo is correct before saving
     lessonInfo.id = shortid.generate();
 
     lessons.push(lessonInfo);
